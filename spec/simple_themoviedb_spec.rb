@@ -3,7 +3,7 @@ RSpec.describe SimpleTheMovieDB do
     expect(SimpleTheMovieDB::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "is instantiable" do
+    expect(SimpleTheMovieDB::Client.new('foo')).to be_a SimpleTheMovieDB::Client
   end
 end
