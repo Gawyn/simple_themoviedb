@@ -1,3 +1,3 @@
-module SimpleThemoviedb
+module SimpleTheMovieDB
   VERSION = "0.1.0"
 end
