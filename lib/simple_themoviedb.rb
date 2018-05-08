@@ -34,45 +34,51 @@ module SimpleTheMovieDB
 
     def get_configuration
       url = "/configuration?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
     end
 
     def get_movie(id, lang = nil)
       url = "/movie/#{id}?"
       options = { :api_key => @api_key }
       options = options.merge(:language => lang) if lang
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url, options)
     end
 
     def get_images(id)
       url = "/movie/#{id}/images?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
     end
 
     def get_cast(id)
       url = "/movie/#{id}/casts?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
     end
 
     def get_person(id)
       url = "/person/#{id}?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
     end
 
     def get_person_images(id)
       url = "/person/#{id}/images?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
     end
 
     def get_person_credits(id)
       url = "/person/#{id}/credits?"
-      options = { :api_key => @api_key }
-      self.class.get(url + options.to_query).parsed_response
+      get_and_parse(url)
+    end
+
+    private
+
+    def get_and_parse(url, options = { api_key: @api_key })
+      self.class.get(url + to_query(options)).parsed_response
+    end
+
+    def to_query(options)
+      options.map do |key, value|
+        "#{key}=#{value}"
+      end.join("&")
     end
   end
 end
