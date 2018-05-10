@@ -21,6 +21,7 @@ Or install it yourself as:
 First of all, initialize a client:
 
 ```ruby
+require 'simple_themoviedb'
 @client = SimpleTheMovieDB::Client.new('your-api-key')
 ```
 
