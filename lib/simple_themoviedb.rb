@@ -23,7 +23,7 @@ module SimpleTheMovieDB
 
       (2..total_pages).inject(response['results']) do |res, page|
         options[:page] = page
-        page_results = get_and_parse(url, options) || []
+        page_results = get_and_parse(url, options)['results'] || []
         res + page_results
       end
     end
