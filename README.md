@@ -1,6 +1,6 @@
-# SimpleThemoviedb
+# SimpleTheMovieDB
 
-A brutally simple wrapper on the themoviedb.com API.
+A brutally simple wrapper on the themoviedb.com API. The library that powers [Love4Movies](http://love4movies.com).
 
 ## Installation
 
@@ -33,7 +33,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the SimpleThemoviedb project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/simple_themoviedb/blob/master/CODE_OF_CONDUCT.md).
