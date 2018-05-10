@@ -19,12 +19,12 @@ module SimpleTheMovieDB
       response = get_and_parse(url, options)
       total_pages = response['total_pages']
 
-      if total_pages && total_pages.is_a?(Integer)
-        (2..total_pages).inject(response['results']) do |res, page|
-          options[:page] = page
-          page_results = get_and_parse(url, options) || []
-          res + page_results
-        end
+      return unless total_pages && total_pages.is_a?(Integer)
+
+      (2..total_pages).inject(response['results']) do |res, page|
+        options[:page] = page
+        page_results = get_and_parse(url, options) || []
+        res + page_results
       end
     end
 
