@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['me@cristianplanas.com']
 
   spec.summary       = 'A simple wrapper on the TheMovieDB API'
-  spec.description   = 'A simple wrapper on the TheMovieDB API'
+  spec.description   = 'A very simple way to access TheMovieDB data. The gem that powers love4movies.com'
   spec.homepage      = 'https://github.com/Gawyn/simple_themoviedb'
   spec.license       = 'MIT'
 
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'httparty'
+  spec.add_dependency 'httparty', '~> 0.16.2'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'rake', '~> 10.0'
