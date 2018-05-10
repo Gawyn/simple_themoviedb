@@ -13,7 +13,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_configuration" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/configuration?api_key=foo').
         and_return(@response)
 
@@ -25,7 +25,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_movie" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/movie/1?api_key=foo&language=es').
         and_return(@response)
 
@@ -37,7 +37,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_images" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/movie/1/images?api_key=foo').
         and_return(@response)
 
@@ -49,7 +49,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_cast" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/movie/1/casts?api_key=foo').
         and_return(@response)
 
@@ -61,7 +61,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_person" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/person/1?api_key=foo').
         and_return(@response)
 
@@ -73,7 +73,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_person_images" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/person/1/images?api_key=foo').
         and_return(@response)
 
@@ -85,7 +85,7 @@ RSpec.describe SimpleTheMovieDB::Client do
 
   describe "#get_person_credits" do
     it 'sends a request through HTTParty' do
-      expect(SimpleTheMovieDB::Client).to receive(:get).
+      expect(HTTParty).to receive(:get).
         with('/person/1/credits?api_key=foo').
         and_return(@response)
 

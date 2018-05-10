@@ -5,10 +5,7 @@ module SimpleTheMovieDB
   class Client
     attr_reader :base, :api_key
 
-    include HTTParty
-    base_uri "http://api.themoviedb.org/3"
-    headers 'accept' => 'application/json' 
-    format :json
+    BASE_URL = "http://api.themoviedb.org/3"
 
     def initialize(api_key)
       @api_key = api_key
@@ -72,7 +69,12 @@ module SimpleTheMovieDB
     private
 
     def get_and_parse(url, options = { api_key: @api_key })
-      self.class.get(url + to_query(options)).parsed_response
+      response = HTTParty.get(
+        BASE_URL + url + to_query(options),
+        headers: {'accept' => 'applcation/json'},
+        format: :json)
+
+      response.parsed_response
     end
 
     def to_query(options)
