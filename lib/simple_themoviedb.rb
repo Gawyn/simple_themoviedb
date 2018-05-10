@@ -3,7 +3,7 @@ require "httparty"
 
 module SimpleTheMovieDB
   class Client
-    attr_reader :base, :api_key
+    attr_reader :api_key
 
     BASE_URL = "http://api.themoviedb.org/3"
 
@@ -16,14 +16,13 @@ module SimpleTheMovieDB
       options = { :query => title, :api_key => @api_key }
       options = options.merge( :include_adult => adult ) if adult
 
-      response = self.class.get(url + options.to_query)
-      parsed_response = response.parsed_response
-      total_pages = parsed_response["total_pages"]
+      response = get_and_parse(url, options)
+      total_pages = response["total_pages"]
 
       if total_pages && total_pages.is_a?(Integer)
-        (2..total_pages).inject(parsed_response["results"]) do |res, page|
+        (2..total_pages).inject(response["results"]) do |res, page|
           options[:page] = page
-          page_results = self.class.get(url + options.to_query).parsed_response["results"] || []
+          page_results = get_and_parse(url, options) || []
           res + page_results
         end
       end
@@ -72,7 +71,8 @@ module SimpleTheMovieDB
       response = HTTParty.get(
         BASE_URL + url + to_query(options),
         headers: {'accept' => 'applcation/json'},
-        format: :json)
+        format: :json
+      )
 
       response.parsed_response
     end
